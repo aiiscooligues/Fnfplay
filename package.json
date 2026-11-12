@@ -1,0 +1,12 @@
+{
+  "name": "fnf-play",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A static browser launcher for the official FNF web demo and compatible HTML FNF mods.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "start": "node scripts/dev-server.mjs",
+    "build": "node scripts/build.mjs"
+  }
+}

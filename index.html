@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d14" />
+    <meta name="description" content="FNF Play is a browser launcher for the official FNF web demo and compatible HTML mods." />
+    <title>FNF Play — browser mod launcher</title>
+    <link rel="icon" href="public/fnf-play-mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="FNF Play home">
+        <span class="brand-mark" aria-hidden="true"><span>↑</span><span>↓</span></span>
+        <span class="brand-word">FNF <strong>PLAY</strong></span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status-dot"></span>
+        <span>HTML BUILD HUB</span>
+        <button class="icon-button" data-action="open-help" aria-label="Open compatibility help">?</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> browser-ready rhythm builds</p>
+          <h1 id="hero-title">Your charts.<br /><em>Your stage.</em><br />One launcher.</h1>
+          <p class="hero-lede">Open the official vanilla web demo or bring your own HTML mod build. No account. No upload. Just the four keys and the downbeat.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" data-action="open-import"><span>＋</span> Import a mod</button>
+            <button class="button button-ghost" data-action="play-vanilla"><span class="play-triangle">▶</span> Play vanilla</button>
+          </div>
+          <div class="hero-note"><span class="note-icon">⌁</span> Compatible with browser-ready HTML builds — desktop-only mods will not load here.</div>
+        </div>
+        <div class="hero-art" aria-label="Decorative rhythm lane illustration">
+          <div class="sunburst"></div>
+          <div class="hero-card hero-card-back"><span>MOD</span><strong>YOUR<br />WAY</strong></div>
+          <div class="hero-card hero-card-front"><div class="card-top"><span>FNF PLAY / 001</span><span>LIVE</span></div><div class="card-arrow">↓</div><div class="card-bottom"><span>LOAD<br />THE BEAT</span><b>●</b></div></div>
+          <div class="key-chip chip-a">A</div><div class="key-chip chip-s">S</div><div class="key-chip chip-k">K</div><div class="key-chip chip-l">L</div>
+        </div>
+      </section>
+
+      <section class="workspace section-shell" id="library" aria-labelledby="library-title">
+        <div class="section-heading">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> your local shelf</p><h2 id="library-title">The library</h2></div>
+          <div class="library-stats"><span id="mod-count">1</span> BUILDS READY <span class="divider">/</span> <span id="storage-state">IN-MEMORY FILES</span></div>
+        </div>
+        <div class="library-layout">
+          <aside class="side-rail" aria-label="Library actions">
+            <button class="rail-link active" data-action="scroll-library"><span class="rail-number">01</span> Library</button>
+            <button class="rail-link" data-action="open-import"><span class="rail-number">02</span> Import</button>
+            <button class="rail-link" data-action="open-help"><span class="rail-number">03</span> Compatibility</button>
+            <div class="rail-rule"></div>
+            <a class="rail-external" href="https://github.com/FunkinCrew/Funkin" target="_blank" rel="noreferrer"><span>↗</span> FNF source</a>
+            <a class="rail-external" href="https://funkincrew.github.io/funkin-modding-docs/" target="_blank" rel="noreferrer"><span>↗</span> Modding docs</a>
+          </aside>
+          <div class="library-content">
+            <div id="library-grid" class="library-grid" aria-live="polite"></div>
+            <button class="add-card" data-action="open-import"><span class="add-plus">＋</span><span><strong>Bring another build</strong><small>ZIP archive or local folder</small></span><span class="add-arrow">→</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="compat-strip section-shell" aria-label="Compatibility notice">
+        <div class="compat-mark">◎</div><div><p class="eyebrow">Before you import</p><h2>HTML is the ticket in.</h2></div>
+        <p>FNF Play can unpack a browser build and remap its relative assets. It cannot convert a Windows, Mac, or Linux mod into HTML. If the build uses native APIs or a custom server, use its official web export or launch it directly.</p>
+        <button class="text-button" data-action="open-help">Read the quick guide <span>→</span></button>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="import-modal" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="import-title">
+        <button class="modal-close" data-action="close-modal" aria-label="Close import dialog">×</button>
+        <p class="eyebrow"><span class="eyebrow-line"></span> add to shelf</p><h2 id="import-title">Bring in a build.</h2>
+        <p class="modal-intro">Choose a ZIP or a folder that already contains a browser-ready HTML game. We keep the files in this tab only.</p>
+        <div class="import-tabs"><button class="import-tab active" data-import-tab="zip">ZIP archive</button><button class="import-tab" data-import-tab="folder">Local folder</button><button class="import-tab" data-import-tab="url">Web URL</button></div>
+        <div class="import-panel" data-import-panel="zip"><label class="drop-zone" for="zip-input"><span class="drop-icon">↥</span><strong>Drop a .zip here</strong><small>or choose a ZIP archive from your device</small><input id="zip-input" type="file" accept=".zip,application/zip" /></label></div>
+        <div class="import-panel" data-import-panel="folder" hidden><label class="drop-zone" for="folder-input"><span class="drop-icon">⌁</span><strong>Choose the mod folder</strong><small>Best for builds with lots of assets</small><input id="folder-input" type="file" webkitdirectory directory multiple /></label></div>
+        <div class="import-panel" data-import-panel="url" hidden><label class="url-label" for="url-input">Browser build URL</label><div class="url-row"><input id="url-input" type="url" placeholder="https://example.com/mod/" /><button class="button button-primary" data-action="import-url">Add URL</button></div><small class="field-hint">Use a URL whose owner allows embedding. Cross-origin pages may need the open-in-new-tab fallback.</small></div>
+        <div class="import-feedback" id="import-feedback" role="status"></div>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="help-modal" hidden>
+      <section class="modal help-modal" role="dialog" aria-modal="true" aria-labelledby="help-title">
+        <button class="modal-close" data-action="close-modal" aria-label="Close compatibility guide">×</button>
+        <p class="eyebrow"><span class="eyebrow-line"></span> quick guide</p><h2 id="help-title">What counts as ready?</h2>
+        <div class="help-grid"><div><span class="help-number">01</span><h3>One HTML entry</h3><p>We look for <code>index.html</code>, <code>game.html</code>, or <code>main.html</code>. Other files are okay, but one of those doors must exist.</p></div><div><span class="help-number">02</span><h3>Relative assets</h3><p>Images, audio, video, CSS, and scripts with relative paths are remapped when possible. Dynamic filesystem calls are outside a browser sandbox.</p></div><div><span class="help-number">03</span><h3>Browser APIs</h3><p>Keyboard input, canvas, WebAudio, and fullscreen are common. Native executables, desktop file APIs, and custom servers are not.</p></div><div><span class="help-number">04</span><h3>Keep a backup</h3><p>Your imported files stay in memory for this tab. Save the original ZIP or folder; refreshes may require a re-import.</p></div></div>
+        <div class="help-footer"><a href="https://funkincrew.github.io/funkin-modding-docs/" target="_blank" rel="noreferrer">Official FNF modding docs ↗</a><button class="button button-primary" data-action="close-modal">Got it</button></div>
+      </section>
+    </div>
+
+    <section class="player-overlay" id="player-overlay" hidden aria-label="Game player">
+      <header class="player-bar"><button class="player-brand" data-action="exit-player"><span class="brand-mark" aria-hidden="true"><span>↑</span><span>↓</span></span><span>FNF <strong>PLAY</strong></span></button><div class="player-title"><span id="player-badge">PLAYING</span><strong id="player-name">Build</strong></div><div class="player-actions"><button data-action="reload-player">↻ <span>Reload</span></button><button data-action="mute-player">⌁ <span id="mute-label">Mute</span></button><button data-action="fullscreen-player">⛶ <span>Fullscreen</span></button><button class="player-exit" data-action="exit-player">Exit ↗</button></div></header>
+      <div class="player-stage"><iframe id="game-frame" title="FNF game player" allow="autoplay; fullscreen; gamepad; pointer-lock" referrerpolicy="no-referrer"></iframe><div id="player-message" class="player-message" hidden></div></div>
+      <footer class="player-footer"><span id="player-source">Source: current tab</span><button data-action="open-current">Open in new tab ↗</button></footer>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

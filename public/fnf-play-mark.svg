@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">FNF Play mark</title>
+  <desc id="desc">A neon four-arrow rhythm game mark</desc>
+  <rect width="512" height="512" rx="112" fill="#0b0d14"/>
+  <path d="M112 306 196 222l84 84-45 45-39-39-39 39Zm112 0 84-84 84 84-45 45-39-39-39 39Z" fill="#ff4f91"/>
+  <path d="M112 206 196 290l84-84-45-45-39 39-39-39Zm112 0 84 84 84-84-45-45-39 39-39-39Z" fill="#68e6f5"/>
+</svg>
